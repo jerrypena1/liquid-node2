@@ -26,6 +26,7 @@
 ## Limitations
 
 - Currently because of the functional nature of the implementation, specifically clusures and the way the require function caches modules, we are duplicating the entire code base in order to spin up a second engine as its own singleton. Unfortunately tho, so far I've noticed I can't register a filesystem for each engine in order to make includes work. Luckily the way I'm using this all the code lives in one place, so includes are a serverside only thing for now which is totally ok for me.
+- Test
 
 ## What does it look like?
 
