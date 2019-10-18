@@ -23,6 +23,10 @@
 - Based on original Ruby code
 - High test coverage
 
+## Limitations
+
+- Currently because of the functional nature of the implementation, specifically clusures and the way the require function caches modules, we are duplicating the entire code base in order to spin up a second engine as its own singleton. Unfortunately tho, so far I've noticed I can't register a filesystem for each engine in order to make includes work. Luckily the way I'm using this all the code lives in one place, so includes are a serverside only thing for now which is totally ok for me.
+
 ## What does it look like?
 
 ```html
@@ -50,18 +54,25 @@ Liquid2 supports a very simple API based around the Liquid2.Engine class.
 For standard use you can just pass it the content of a file and call render with an object.
 
 ```js
-Liquid2 = require('liquid2')
-const engine = new Liquid2.Engine()
 
-engine
-  .parse('hi {{name}}')
-  .then(template => template.render({ name: 'tobi' }))
+
+
+Liquid2 = require('liquid2')
+const engineS = new Liquid2.Engine()
+const engineC = new Liquid2.L2.Engine()
+
+const templateSource = 'hi {{name}}'
+const serverData = { name: 'plumber' }
+
+engineS
+  .parse(templateSource)
+  .then(template => template.render(serverData))
   .then(result => console.log(result))
 
 // or
 
-engine
-  .parseAndRender('hi {{name}}', { name: 'tobi' })
+engineS
+  .parseAndRender(templateSource, serverData)
   .then(result => console.log(result))
 ```
 
