@@ -1,9 +1,9 @@
 {
-  "name": "liquid",
-  "description": "Node.js port of the Liquid template engine",
-  "version": "4.0.0",
+  "name": "liquid2",
+  "description": "Node.js port of the Liquid template engine with support for ServerSide and ClientSide processing",
+  "version": "1.0.0",
   "license": "MIT",
-  "homepage": "https://github.com/liquid-lang/liquid-node",
+  "homepage": "https://github.com/jerrypena1/liquid-node2",
   "keywords": [
     "liquid",
     "jekyll",

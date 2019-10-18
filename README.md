@@ -1,19 +1,22 @@
 # Liquid with Node.js
 
-[![NPM version](https://img.shields.io/npm/v/liquid-node.svg?style=flat)](https://www.npmjs.org/package/liquid-node)
-[![Downloads](http://img.shields.io/npm/dm/liquid-node.svg?style=flat)](https://www.npmjs.org/package/liquid-node)
-[![GitHub Issues](http://img.shields.io/github/issues/sirlantis/liquid-node.svg?style=flat)](https://github.com/sirlantis/liquid-node/issues)
+[![NPM version](https://img.shields.io/npm/v/liquid-node2.svg?style=flat)](https://www.npmjs.org/package/liquid-node2)
+[![Downloads](http://img.shields.io/npm/dm/liquid-node2.svg?style=flat)](https://www.npmjs.org/package/liquid-node2)
+[![GitHub Issues](http://img.shields.io/github/issues/jerrypena1/liquid-node2.svg?style=flat)](https://github.com/jerrypena1/liquid-node2/issues)
 <br>
-[![Build Status](https://img.shields.io/travis/sirlantis/liquid-node.svg?style=flat)](https://travis-ci.org/sirlantis/liquid-node)
-[![Coverage Status](https://img.shields.io/coveralls/sirlantis/liquid-node.svg?style=flat)](https://coveralls.io/r/sirlantis/liquid-node?branch=master)
-[![Dependency Status](http://img.shields.io/david/sirlantis/liquid-node.svg?style=flat)](https://david-dm.org/sirlantis/liquid-node)
-[![devDependency Status](http://img.shields.io/david/dev/sirlantis/liquid-node.svg?style=flat)](https://david-dm.org/sirlantis/liquid-node#info=devDependencies)
+[![Build Status](https://img.shields.io/travis/jerrypena1/liquid-node2.svg?style=flat)](https://travis-ci.org/jerrypena1/liquid-node2)
+[![Coverage Status](https://img.shields.io/coveralls/jerrypena1/liquid-node2.svg?style=flat)](https://coveralls.io/r/jerrypena1/liquid-node2?branch=master)
+[![Dependency Status](http://img.shields.io/david/jerrypena1/liquid-node2.svg?style=flat)](https://david-dm.org/jerrypena1/liquid-node2)
+[![devDependency Status](http://img.shields.io/david/dev/jerrypena1/liquid-node2.svg?style=flat)](https://david-dm.org/jerrypena1/liquid-node2#info=devDependencies)
 
-> LiquidNode is a port of the original Liquid template engine from *Ruby* to *Node.js*.
-> It uses Promises to support non-blocking/asynchronous variables, filters, and blocks.
+> LiquidNode2 is a fork of LiquidNode. LiquidNode is a port of the original Liquid template engine from *Ruby* to *Node.js*.
+> It uses Promises to support non-blocking/asynchronous variables, filters, and blocks. This version has been tweaked to 
+> provide a second template engine to support one for Server-Side and another for Client-Side template processing. 
 
 ## Features
 
+- Supports generating two Liquid template engines (for server-side AND client side processing)
+- Supports overriding of template parsing syntax (change delimiters, etc, etc) for EACH engine.
 - Supports asynchronous variables, tags, functions and filters (helpers)
 - Allows you to add custom tags and filters easily
 - Supports full liquid syntax
@@ -38,17 +41,17 @@
 ## Installation
 
 ```sh
-npm install liquid
+npm install liquid2
 ```
 
 ## Usage
 
-Liquid supports a very simple API based around the Liquid.Engine class.
+Liquid2 supports a very simple API based around the Liquid2.Engine class.
 For standard use you can just pass it the content of a file and call render with an object.
 
 ```js
-Liquid = require('liquid')
-const engine = new Liquid.Engine()
+Liquid2 = require('liquid2')
+const engine = new Liquid2.Engine()
 
 engine
   .parse('hi {{name}}')
@@ -90,11 +93,11 @@ engine.registerFilters({
 
 ### Registering new tags
 
-Take a look at the [existing tags](https://github.com/sirlantis/liquid-node/tree/master/lib/liquid/tags)
+Take a look at the [existing tags](https://github.com/jerrypena1/liquid-node2/tree/master/lib/liquid/tags)
 to see how to implement them.
 
 ```js
-class MyTag extends Liquid.Tag {
+class MyTag extends Liquid2.Tag {
   render () {
     return 'hello world'
   }

@@ -1,14 +1,14 @@
 module.exports = (function () {
-  // console.log('jj',LiquidEngineOptions)
-  const hasCnfg = typeof LiquidEngineOptions == 'object';
+  // console.log('jj',LiquidEngineOptions2)
+  const hasCnfg = typeof LiquidEngineOptions2 == 'object';
   if (hasCnfg) {
-    LiquidEngineOptions.has = function (key) {
+    LiquidEngineOptions2.has = function (key) {
       return typeof this[key] != undefined;
     }
-    LiquidEngineOptions.extend = function (obj) {
+    LiquidEngineOptions2.extend = function (obj) {
       const keys = Object.keys(this)
       keys.forEach(function(key){
-        obj[key] = LiquidEngineOptions[key]
+        obj[key] = LiquidEngineOptions2[key]
       })
     }
   }
@@ -37,6 +37,6 @@ module.exports = (function () {
   Liquid.PartialTemplateParser = RegExp(Liquid.TagStart.source + '.*?' + Liquid.TagEnd.source + '|' + Liquid.VariableStart.source + '.*?' + Liquid.VariableIncompleteEnd.source)
   Liquid.TemplateParser = RegExp('(' + Liquid.PartialTemplateParser.source + '|' + Liquid.AnyStartingTag.source + ')')
   Liquid.VariableParser = RegExp('\\[[^\\]]+\\]|' + Liquid.VariableSegment.source + '+\\??')
-  if (hasCnfg) LiquidEngineOptions.extend(Liquid)
+  if (hasCnfg) LiquidEngineOptions2.extend(Liquid)
   return Liquid
 })()

@@ -1,3 +1,13 @@
+# LiquidNode2 Change History
+
+## 1.0.0
+
+- Forked the project and started a new one with two engines. The benefit of the two engines coming from the same library means that there is trully a single syntax to master for both clientside and serverside code. 
+- This new version also allows you to override the syntax vars.
+- Fixed an issue where I was using the same characters in both the expression and tag delimiters. This was causing the wrong type of tag to be processed. In my situation I was using <% as the start for a tag and <%= for the start of an expression. The block code detection was thinking the expression was a tag because the regex pattern still worked. All I did was change the order of the If/IfElse so the expression would be found first.
+- Chances are that I'll need to refactor the code to be class based in order to support a better configuration experience.
+- Added a new example to show the usage of the two engines along with overriding the engine configuration for one engine. And finally you see how to actually render a template with both engines; not that this is how you would actually use it in your project. For example, in a project I'm working on, I need to generate code that has clientside code in it. This makes the serverside engine act like a preprocessor. All I need to do is to save the serverside code as the template source. I can then render the template using the clientside engine and save that out to see a static preview at runtime. Since the only things I changed in my example were the delimiters the real benefit is that I only have to use a single syntax. 
+
 # LiquidNode Change History
 
 ## 3.0.0
